@@ -11,6 +11,7 @@ bot = telebot.TeleBot(BOT_TOKEN)
 @bot.message_handler(commands=['start', 'hello'])
 def send_welcome(message):
     bot.reply_to(message, "Howdy, how are you doing?")
+    bot.reply_to(message, "Type /quote to get started")
 
 @bot.message_handler(commands=['quote'])
 def quote_type_handler(message):
@@ -33,7 +34,7 @@ def quote_sender(message):
 
 @bot.message_handler(func=lambda msg: True)
 def echo_all(message):
-    bot.send_message(message.chat.id, "Invalid option, try again by giving \quote")
+    bot.send_message(message.chat.id, "Invalid option, try again by giving /quote")
 
 bot.infinity_polling()
 
